@@ -1,24 +1,45 @@
 
+var growTree = function() {
+  var charT = document.getElementById('char').value;
+  var treeHeight = document.getElementById('height').value;
 
-function popup () {
-  alert('both fields must have a value')
+  (function () {
+    var spaces = [];
+    var leafs = [];
+    var finaltree = [];
+
+    for (i = treeHeight; i >= 0; i--) {
+      spaces.push(' '.repeat(i));
+    }
+
+    for (j = 1; j < (treeHeight * 2); j = j + 2) {
+      leafs.push(charT.repeat(j));
+    }
+
+    for (k = 0; k < treeHeight; k++) {
+      finaltree.push(spaces[k], leafs[k]);
+      console.log(finaltree.join(' '));
+      finaltree = [];
+ }
+ }())
+}
+var buttonPress = function (e) {
+    if (e.keyCode == 13  && (treeHeight != 0 || charT  != 0)) {
+        growTree();
+    }
 }
 
-var spc = [];
-var leafs = [];
-var finaltree = []
+var treeHeight = document.getElementById('heightNumber');
+var charT = document.getElementById('charType');
+var button = document.getElementById('startGrowing').addEventListener('click', growTree);
+var enterButton = document.addEventListener('keydown', buttonPress);
 
-for (i = 9; i >=0; i--) {
- spc.push(' '.repeat(i));
-}
-//console.log(spc);
 
-for (j = 1; j < 20; j = j + 2) {
- leafs.push('*'.repeat(j));
-}
-//console.log(leafs);
-for (z = 0; z < 10; z++) {
- finaltree.push(spc[z], leafs[z]);
- console.log(finaltree.join(' '));
- finaltree = [];
-}
+('startGrowing').onclick(function(){
+  var charT = document.getElementById('char').value;
+  var treeHeight = document.getElementById('height').value;
+
+    if (charT === '' || treeHeight === ''){
+        alert('must enter value');
+    }
+});
