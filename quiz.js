@@ -7,6 +7,12 @@ var growTree = function() {
     var spaces = [];
     var leafs = [];
     var finaltree = [];
+    var validate = [];
+
+    if (charT === '' || treeHeight === ''){
+        alert('must enter value');
+        validate = [];
+    }
 
     for (i = treeHeight; i >= 0; i--) {
       spaces.push(' '.repeat(i));
@@ -33,13 +39,3 @@ var treeHeight = document.getElementById('heightNumber');
 var charT = document.getElementById('charType');
 var button = document.getElementById('startGrowing').addEventListener('click', growTree);
 var enterButton = document.addEventListener('keydown', buttonPress);
-
-
-('startGrowing').onclick(function(){
-  var charT = document.getElementById('char').value;
-  var treeHeight = document.getElementById('height').value;
-
-    if (charT === '' || treeHeight === ''){
-        alert('must enter value');
-    }
-});
