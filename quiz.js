@@ -1,16 +1,18 @@
 
-var growTree = function() {
-  var charT = document.getElementById('char').value;
-  var treeHeight = document.getElementById('height').value;
+var growTree = function(final) {
+  charT = document.getElementById('char').value;
+  treeHeight = document.getElementById('height').value;
 
-  (function () {
+   if (charT === '' || treeHeight === ''){
+        alert('must enter value');
+    }
+
+
+  (function final() {
     var spaces = [];
     var leafs = [];
     var finaltree = [];
 
-    if (charT === '' || treeHeight === ''){
-        alert('must enter value');
-    }
 
     for (i = treeHeight; i >= 0; i--) {
       spaces.push(' '.repeat(i));
@@ -24,9 +26,10 @@ var growTree = function() {
       finaltree.push(spaces[k], leafs[k]);
       console.log(finaltree.join(' '));
       finaltree = [];
- }
- }())
+    }
+ })()
 }
+
 var buttonPress = function (e) {
     if (e.keyCode == 13  && (treeHeight != 0 || charT  != 0)) {
         growTree();
