@@ -7,11 +7,9 @@ var growTree = function() {
     var spaces = [];
     var leafs = [];
     var finaltree = [];
-    var validate = [];
 
     if (charT === '' || treeHeight === ''){
         alert('must enter value');
-        validate = [];
     }
 
     for (i = treeHeight; i >= 0; i--) {
