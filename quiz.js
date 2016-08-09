@@ -1,18 +1,22 @@
 
-var growTree = function(final) {
-  charT = document.getElementById('char').value;
-  treeHeight = document.getElementById('height').value;
-
-   if (charT === '' || treeHeight === ''){
-        alert('must enter value');
-    }
+var treeHeight = document.getElementById('height');
+var charT = document.getElementById('char');
 
 
-  (function final() {
+var growTree = {
+  charT: document.getElementById('char').value,
+  treeHeight: document.getElementById('height').value  
+};
+  
+
+  function final(growTree) {
     var spaces = [];
     var leafs = [];
     var finaltree = [];
 
+    if (charT === '' || treeHeight === ''){
+        alert('must enter value');
+    }
 
     for (i = treeHeight; i >= 0; i--) {
       spaces.push(' '.repeat(i));
@@ -27,16 +31,15 @@ var growTree = function(final) {
       console.log(finaltree.join(' '));
       finaltree = [];
     }
- })()
-}
+ }
+
 
 var buttonPress = function (e) {
     if (e.keyCode == 13  && (treeHeight != 0 || charT  != 0)) {
-        growTree();
+        final(growTree);
     }
 }
 
-var treeHeight = document.getElementById('heightNumber');
-var charT = document.getElementById('charType');
-var button = document.getElementById('startGrowing').addEventListener('click', growTree);
-var enterButton = document.addEventListener('keydown', buttonPress);
+
+  document.getElementById('startGrowing').addEventListener('click', final);
+  document.addEventListener('keydown', buttonPress);
