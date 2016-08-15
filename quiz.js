@@ -1,29 +1,36 @@
-document.getElementById('startGrowing').addEventListener('click', final);
+document.getElementById('startGrowing').addEventListener('click', check);
 document.addEventListener('keydown', buttonPress);
 
-var growTree = {}
+function check () {
+    var charT = document.getElementById('char').value;
+    var treeHeight = document.getElementById('height').value;
+
+  if (charT === '' || treeHeight === ''){
+        alert('must enter value');
+    }
+
+  var growTree = {
+    charT: charT,
+    treeHeight: treeHeight
+  };
+
+  final(growTree);
+}
 
   function final(growTree) {
     var spaces = [];
     var leafs = [];
     var finaltree = [];
 
-    charT = document.getElementById('char').value,
-    treeHeight = document.getElementById('height').value  
-
-    if (charT === '' || treeHeight === ''){
-        alert('must enter value');
-    }
-
-    for (i = treeHeight; i >= 0; i--) {
+    for (i = growTree.treeHeight; i >= 0; i--) {
       spaces.push(' '.repeat(i));
     }
 
-    for (j = 1; j < (treeHeight * 2); j = j + 2) {
-      leafs.push(charT.repeat(j));
+    for (j = 1; j < (growTree.treeHeight * 2); j = j + 2) {
+      leafs.push(growTree.charT.repeat(j));
     }
 
-    for (k = 0; k < treeHeight; k++) {
+    for (k = 0; k < growTree.treeHeight; k++) {
       finaltree.push(spaces[k], leafs[k]);
       console.log(finaltree.join(' '));
       finaltree = [];
@@ -32,6 +39,6 @@ var growTree = {}
 
   function buttonPress (e) {
     if (e.keyCode == 13) {
-        final()
+        check()
     }
 }
