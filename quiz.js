@@ -1,18 +1,15 @@
+document.getElementById('startGrowing').addEventListener('click', final);
+document.addEventListener('keydown', buttonPress);
 
-var treeHeight = document.getElementById('height');
-var charT = document.getElementById('char');
-
-
-var growTree = {
-  charT: document.getElementById('char').value,
-  treeHeight: document.getElementById('height').value  
-};
-  
+var growTree = {}
 
   function final(growTree) {
     var spaces = [];
     var leafs = [];
     var finaltree = [];
+
+    charT = document.getElementById('char').value,
+    treeHeight = document.getElementById('height').value  
 
     if (charT === '' || treeHeight === ''){
         alert('must enter value');
@@ -33,13 +30,8 @@ var growTree = {
     }
  }
 
-
-var buttonPress = function (e) {
-    if (e.keyCode == 13  && (treeHeight != 0 || charT  != 0)) {
-        final(growTree);
+  function buttonPress (e) {
+    if (e.keyCode == 13) {
+        final()
     }
 }
-
-
-  document.getElementById('startGrowing').addEventListener('click', final);
-  document.addEventListener('keydown', buttonPress);
